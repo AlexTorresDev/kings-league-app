@@ -16,16 +16,20 @@ void init() {
     // Use case
     ..registerLazySingleton(() => GetLeaderboard(getIt()))
     ..registerLazySingleton(() => GetTeam(getIt()))
+    ..registerLazySingleton(() => GetPresident(getIt()))
 
     // BLoC
     ..registerFactory(() => LeaderboardCubit(getIt()))
     ..registerFactory(() => TeamCubit(getIt()))
+    ..registerFactory(() => PresidentCubit(getIt()))
 
     // Repository
     ..registerLazySingleton<LeaderboardRepository>(
         () => LeaderboardRepositoryImpl(remoteDataSource: getIt()))
     ..registerLazySingleton<TeamRepository>(
         () => TeamRepositoryImpl(remoteDataSource: getIt()))
+    ..registerLazySingleton<PresidentRepository>(
+        () => PresidentRepositoryImpl(remoteDataSource: getIt()))
 
     // Data sources
     ..registerLazySingleton<RemoteDataSource>(
