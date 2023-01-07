@@ -51,7 +51,29 @@ class _HomePageState extends State<HomePage> {
               child: CircularProgressIndicator(),
             );
           } else if (state is LeaderboardLoaded) {
-            return LeaderBoard(data: state.leaderboard);
+            return Column(
+              children: [
+                LeaderBoard(data: state.leaderboard),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    showAboutDialog(
+                      context: context,
+                      applicationName: 'Kings League',
+                      applicationVersion: '0.0.1',
+                      applicationIcon: Image.asset(
+                        'assets/images/ic_launcher.jpg',
+                        width: 100,
+                        height: 100,
+                      ),
+                      applicationLegalese:
+                          'App móvil de la Kings League Infojobs por temas didácticos',
+                    );
+                  },
+                  child: const Text('About'),
+                ),
+              ],
+            );
           } else if (state is LeaderboardError) {
             return const Center(
               child: Text('Home Error'),
