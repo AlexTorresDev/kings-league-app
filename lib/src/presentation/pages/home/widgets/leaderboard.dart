@@ -30,10 +30,10 @@ class _LeaderBoardState extends State<LeaderBoard> {
         child: Table(
           defaultVerticalAlignment: TableCellVerticalAlignment.middle,
           columnWidths: const {
-            0: FixedColumnWidth(80.0),
+            0: FixedColumnWidth(70.0),
             1: FlexColumnWidth(),
-            2: FixedColumnWidth(60.0),
-            3: FixedColumnWidth(60.0),
+            2: FixedColumnWidth(30.0),
+            3: FixedColumnWidth(50.0),
           },
           border: TableBorder(
             horizontalInside: BorderSide(
