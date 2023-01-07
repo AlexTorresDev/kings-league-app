@@ -7,6 +7,7 @@ import 'package:kings_league_app/src/data/models/models.dart';
 abstract class RemoteDataSource {
   Future<List<LeaderboardModel>> getLeaderboard();
   Future<TeamModel> getTeam(String id);
+  Future<PresidentModel> getPresident(String id);
 }
 
 class RemoteDataSourceImpl implements RemoteDataSource {
@@ -38,6 +39,19 @@ class RemoteDataSourceImpl implements RemoteDataSource {
       final json = jsonDecode(response.body);
       final team = TeamModel.fromJson(json);
       return team;
+    } else {
+      throw ServerException();
+    }
+  }
+
+  @override
+  Future<PresidentModel> getPresident(String id) async {
+    final response = await client.get('/presidents/$id');
+
+    if (response.statusCode == 200) {
+      final json = jsonDecode(response.body);
+      final president = PresidentModel.fromJson(json);
+      return president;
     } else {
       throw ServerException();
     }

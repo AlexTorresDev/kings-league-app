@@ -20,6 +20,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (_) => di.getIt<TeamCubit>(),
         ),
+        BlocProvider(
+          create: (_) => di.getIt<PresidentCubit>(),
+        ),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
