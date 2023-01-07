@@ -1,5 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.kings_league_app">
+    package="dev.alextrs.kings_league_app">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
    <application
         android:label="kings_league_app"
         android:name="${applicationName}"

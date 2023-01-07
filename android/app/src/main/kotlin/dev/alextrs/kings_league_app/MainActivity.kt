@@ -1,4 +1,4 @@
-package com.example.kings_league_app
+package dev.alextrs.kings_league_app
 
 import io.flutter.embedding.android.FlutterActivity
 
