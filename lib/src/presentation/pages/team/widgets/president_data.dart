@@ -1,69 +1,61 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kings_league_app/src/config/common.dart';
-import 'package:kings_league_app/src/presentation/blocs/blocs.dart';
+import 'package:kings_league_app/src/domain/entities/entities.dart';
 
-class PresidentData extends StatefulWidget {
+class PresidentData extends StatelessWidget {
   const PresidentData({
     Key? key,
-    required this.presidentId,
+    required this.president,
   }) : super(key: key);
 
-  final String presidentId;
-
-  @override
-  State<PresidentData> createState() => _PresidentDataState();
-}
-
-class _PresidentDataState extends State<PresidentData> {
-  @override
-  void initState() {
-    super.initState();
-    context.read<PresidentCubit>().getById(widget.presidentId);
-  }
+  final President president;
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<PresidentCubit, PresidentState>(
-      builder: (_, state) {
-        if (state is PresidentLoading) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        } else if (state is PresidentLoaded) {
-          final president = state.president;
+    final theme = Theme.of(context);
 
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Image.network(
-                president.image,
-                height: 160.0,
-                fit: BoxFit.contain,
-                loadingBuilder: (_, child, loadingProgress) {
-                  if (loadingProgress == null) {
-                    return child;
-                  } else {
-                    return const SizedBox(
-                      height: 64.0,
-                      width: 64.0,
-                    );
-                  }
-                },
-              ),
-              Text(
-                president.name,
-                style: Theme.of(context).textTheme.subtitle2,
-              ),
-              Text(
-                'President',
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
-            ],
-          );
-        } else {
-          return const Text('Error');
-        }
-      },
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Image.network(
+          president.image,
+          height: 180.0,
+          fit: BoxFit.contain,
+          loadingBuilder: (_, child, loadingProgress) {
+            if (loadingProgress == null) {
+              return child;
+            } else {
+              return const SizedBox(
+                height: 180.0,
+              );
+            }
+          },
+        ),
+        Text(
+          president.name,
+          style: theme.textTheme.titleLarge?.copyWith(
+            color: theme.colorScheme.onPrimary,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        const SizedBox(height: 4.0),
+        Container(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 8.0,
+            vertical: 4.0,
+          ),
+          decoration: BoxDecoration(
+            color: Colors.black45,
+            borderRadius: BorderRadius.circular(4.0),
+          ),
+          child: Text(
+            'Presidente'.toUpperCase(),
+            style: theme.textTheme.bodySmall?.copyWith(
+              color: theme.colorScheme.primary,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
