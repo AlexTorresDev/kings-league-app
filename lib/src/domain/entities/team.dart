@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 
 import 'player.dart';
-import 'president.dart';
 import 'coach.dart';
 
 class Team extends Equatable {
@@ -16,11 +15,9 @@ class Team extends Equatable {
     required this.channel,
     required this.socialNetworks,
     required this.players,
-    required this.shortName,
     this.coach,
+    required this.shortName,
     this.coachInfo,
-    this.president,
-    this.rank,
   });
 
   final String id;
@@ -33,11 +30,9 @@ class Team extends Equatable {
   final String channel;
   final List<String> socialNetworks;
   final List<Player> players;
-  final String shortName;
   final String? coach;
+  final String shortName;
   final Coach? coachInfo;
-  final President? president;
-  final int? rank;
 
   @override
   List<Object?> get props => [
@@ -54,7 +49,5 @@ class Team extends Equatable {
         shortName,
         coach,
         coachInfo,
-        president,
-        rank,
       ];
 }

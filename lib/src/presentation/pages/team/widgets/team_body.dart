@@ -64,7 +64,7 @@ class TeamBody extends StatelessWidget {
                   child: Column(
                     children: [
                       Text(
-                        player.name,
+                        player.fullName,
                         textAlign: TextAlign.center,
                         style: theme.textTheme.bodyMedium?.copyWith(
                           color: theme.colorScheme.onPrimary,
@@ -73,7 +73,7 @@ class TeamBody extends StatelessWidget {
                       ),
                       const SizedBox(height: 3.0),
                       Text(
-                        player.role.toUpperCase(),
+                        player.role.toString(),
                         textAlign: TextAlign.center,
                         style: theme.textTheme.bodySmall?.copyWith(
                           color: theme.colorScheme.primary,

@@ -2,7 +2,6 @@ import 'package:kings_league_app/src/domain/entities/entities.dart';
 
 import 'player_model.dart';
 import 'coach_model.dart';
-import 'president_model.dart';
 
 class TeamModel extends Team {
   const TeamModel({
@@ -16,11 +15,9 @@ class TeamModel extends Team {
     required String channel,
     required List<String> socialNetworks,
     required List<Player> players,
-    required String shortName,
     String? coach,
+    required String shortName,
     Coach? coachInfo,
-    President? president,
-    int? rank,
   }) : super(
           id: id,
           color: color,
@@ -32,11 +29,9 @@ class TeamModel extends Team {
           channel: channel,
           socialNetworks: socialNetworks,
           players: players,
-          shortName: shortName,
           coach: coach,
+          shortName: shortName,
           coachInfo: coachInfo,
-          president: president,
-          rank: rank,
         );
 
   factory TeamModel.fromJson(Map<String, dynamic> json) => TeamModel(
@@ -56,10 +51,6 @@ class TeamModel extends Team {
         coachInfo: json["coachInfo"] != null
             ? CoachModel.fromJson(json["coachInfo"])
             : null,
-        president: json["president"] != null
-            ? PresidentModel.fromJson(json["president"])
-            : null,
-        rank: json["rank"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -77,7 +68,5 @@ class TeamModel extends Team {
         "coach": coach,
         "shortName": shortName,
         "coachInfo": (coachInfo as CoachModel).toJson(),
-        "president": (president as PresidentModel).toJson(),
-        "rank": rank,
       };
 }
