@@ -6,3 +6,4 @@ export 'president_model.dart';
 export 'team_model.dart';
 export 'top_assist_model.dart';
 export 'top_scorer_model.dart';
+export 'stats_model.dart';

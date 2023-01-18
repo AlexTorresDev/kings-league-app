@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:kings_league_app/src/config/enum_values.dart';
 import 'stats.dart';
 
 class Player extends Equatable {
@@ -38,15 +39,3 @@ final roleValues = EnumValues({
   "Medio": Role.medio,
   "Portero": Role.portero
 });
-
-class EnumValues<T> {
-  Map<String, T> map;
-  Map<T, String>? reverseMap;
-
-  EnumValues(this.map);
-
-  Map<T, String>? get reverse {
-    reverseMap ??= map.map((k, v) => MapEntry(v, k));
-    return reverseMap;
-  }
-}

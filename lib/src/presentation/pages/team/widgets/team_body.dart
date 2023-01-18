@@ -73,7 +73,7 @@ class TeamBody extends StatelessWidget {
                       ),
                       const SizedBox(height: 3.0),
                       Text(
-                        player.role.toString(),
+                        roleValues.reverse![player.role]!.toUpperCase(),
                         textAlign: TextAlign.center,
                         style: theme.textTheme.bodySmall?.copyWith(
                           color: theme.colorScheme.primary,
